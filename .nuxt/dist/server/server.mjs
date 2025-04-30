@@ -1,0 +1,1 @@
+export { default } from "file:///C:/Users/mxamu/OneDrive/Desktop/weather_app/weather_dashboard/node_modules/@nuxt/vite-builder/dist/runtime/vite-node.mjs"
