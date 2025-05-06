@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-gradient-to-br from-blue-400 to-indigo-600 rounded-2xl shadow-2xl overflow-hidden max-w-md mx-auto">
+  <div :class="getDynamicBackgroundClass()" class="rounded-2xl shadow-2xl overflow-hidden max-w-md mx-auto">
     <!-- Location header with time -->
     <div class="p-6 text-center relative">
       <div class="absolute top-4 right-4 bg-white/20 px-3 py-1 rounded-full text-sm text-white backdrop-blur-sm">
@@ -140,6 +140,35 @@ const getWeatherIcon = (condition: string) => {
     return CloudFog;
   } else {
     return Sun;
+  }
+};
+
+// Generate dynamic background class based on temperature in Celsius
+const getDynamicBackgroundClass = () => {
+  const temp = Math.round(props.weather.current.temp);
+  
+  // Define temperature thresholds in Celsius
+  if (temp <= 0) {
+    // Very cold (freezing or below)
+    return 'bg-gradient-to-br from-blue-900 to-blue-700';
+  } else if (temp <= 20) {
+    // Cold
+    return 'bg-gradient-to-br from-blue-600 to-blue-400';
+  } else if (temp <= 25) {
+    // Cool
+    return 'bg-gradient-to-br from-blue-400 to-indigo-600';
+  } else if (temp <= 30) {
+    // Mild
+    return 'bg-gradient-to-br from-indigo-400 to-purple-600';
+  } else if (temp <= 35) {
+    // Warm
+    return 'bg-gradient-to-br from-purple-400 to-orange-500';
+  } else if (temp <= 40) {
+    // Hot
+    return 'bg-gradient-to-br from-orange-500 to-red-500';
+  } else {
+    // Very hot
+    return 'bg-gradient-to-br from-red-500 to-red-700';
   }
 };
 </script>
