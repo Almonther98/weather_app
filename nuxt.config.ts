@@ -27,5 +27,15 @@ export default defineNuxtConfig({
     compatibilityDate: '2025-04-29'
   },
 
-  compatibilityDate: '2025-04-29'
+  compatibilityDate: '2025-04-29',
+
+  css: [
+    '@/assets/css/main.css'
+  ],
+  postcss: {
+    plugins: {
+      tailwindcss: {},
+      autoprefixer: {},
+    },
+  },
 });
